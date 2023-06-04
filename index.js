@@ -7,10 +7,12 @@ function clickAction()
 {
     var letter=this.innerHTML;
     sound(letter);
+    addAnimation(letter);
 }
 
 document.addEventListener("keydown",function (e){
     sound(e.key);
+    addAnimation(e.key);
 });
 
 
@@ -48,4 +50,13 @@ function sound(key)
         default:
             break;
     }
+}
+
+function addAnimation(keyStroke)
+{
+   var activeButton= document.querySelector("."+keyStroke);
+   activeButton.classList.add("pressed");
+    setTimeout(function(){
+        activeButton.classList.remove("pressed");
+    },100)
 }
